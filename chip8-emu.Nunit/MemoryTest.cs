@@ -56,5 +56,24 @@ namespace chip8_emu.Xunit.CPU
             }
 
         }
+
+        [Fact]
+        public void GetOpCodeTest()
+        {
+            Dictionary<EMemoryPartitions, Int32> memMap = new Dictionary<EMemoryPartitions, Int32>()
+            {
+                {EMemoryPartitions.Font, 0},
+                {EMemoryPartitions.Rom, 512}
+            };
+
+            using(BinaryReader br = new BinaryReader(File.Open("..\\..\\..\\Resources\\pong2.c8", FileMode.Open)))
+            {
+                Memory mem = new Memory(4096, memMap);
+                Assert.True(mem.loadRom(br.ReadBytes((int)br.BaseStream.Length)));
+                
+                ushort opcode = mem.getOpcode(0x200);
+                Assert.Equal(opcode, 0x22FC);
+            }
+        }
     }
 }

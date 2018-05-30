@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chip8-emu", "chip8-emu\chip8-emu.csproj", "{D128A9E4-03B7-4C4A-9538-4CEB8CDE4F1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chip8-emu.Xunit", "chip8-emu.Xunit\chip8-emu.Xunit.csproj", "{DA828778-EF5C-4465-B4DB-F1919BE85D77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chip8-emu.Nunit", "chip8-emu.Nunit\chip8-emu.Nunit.csproj", "{DA828778-EF5C-4465-B4DB-F1919BE85D77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

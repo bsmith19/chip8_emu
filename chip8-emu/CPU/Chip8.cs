@@ -23,6 +23,7 @@ namespace chip8_emu.CPU
         #region Constructors
         public Chip8()
         {
+            // TODO: This shouldnt be constant, should be read in from the memory map
             mProgramCounter = 0x200;
             mIndexRegister = 0;
         }
