@@ -72,7 +72,7 @@ namespace chip8_emu.Xunit.CPU
                 Assert.True(mem.loadRom(br.ReadBytes((int)br.BaseStream.Length)));
                 
                 ushort opcode = mem.getOpcode(0x200);
-                Assert.Equal(opcode, 0x22FC);
+                Assert.Equal(0x22FC, opcode);
             }
         }
     }
