@@ -4,21 +4,15 @@ namespace chip8_emu.CPU.Instruction
 {
     public class InstSound_FX18 : IInstruction
     {
-        #region Private Vars
-        private Memory mMemory;
-        private Stack mStack;
-        #endregion
 
         #region Constructor
-        public InstSound_FX18(Memory memory, Stack stack)
+        public InstSound_FX18()
         {
-            this.mMemory = memory;
-            this.mStack = stack;
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(Memory memory)
+        public Boolean Handle(CPUData systemData)
         {
             return true;
         }

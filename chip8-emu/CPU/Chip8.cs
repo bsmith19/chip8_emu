@@ -6,14 +6,7 @@ namespace chip8_emu.CPU
     public class Chip8
     {
         #region Private Properties
-        private Stack SystemStack { get; set; }
-        private Memory SystemMemory { get; set; }
-        #endregion
-
-        #region Private Members
-        private Byte[] mCpuRegisters;
-        private ushort mProgramCounter;
-        private ushort mIndexRegister;
+        private CPUData SystemStorage { get; set;}
         #endregion
 
         #region Timers
@@ -25,12 +18,12 @@ namespace chip8_emu.CPU
         public Chip8(short stackSize, short memorySize, int programSpace)
         {
             // TODO: This shouldnt be constant, should be read in from the memory map
-            mProgramCounter = 0x200;
-            mIndexRegister = 0;
+            SystemStorage.ProgramCounter = 0x200;
+            SystemStorage.IndexRegister = 0;
 
             // The memory layout is specfic to this CPU, so it can be defined here
-            SystemStack = new Stack(stackSize);
-            SystemMemory = new Memory(memorySize, new Dictionary<EMemoryPartitions, int>() 
+            SystemStorage.SystemStack = new Stack(stackSize);
+            SystemStorage.SystemMemory = new Memory(memorySize, new Dictionary<EMemoryPartitions, int>() 
             {
                 { EMemoryPartitions.Font, programSpace - 1 },
                 { EMemoryPartitions.Rom, programSpace }
@@ -42,16 +35,16 @@ namespace chip8_emu.CPU
         public Boolean emulateCycle()
         {
             //Fetch Opcode
-            ushort opCode = SystemMemory.getOpcode(mProgramCounter);
+            ushort opCode = SystemStorage.SystemMemory.getOpcode(SystemStorage.ProgramCounter);
 
             //Pick Correct action for opcode
-            Instruction.IInstruction inst = Instruction.InstructionFactory.buildInstruction(opCode, SystemMemory, SystemStack);
-            Boolean ok = inst.Handle();
+            Instruction.IInstruction inst = Instruction.InstructionFactory.buildInstruction(opCode);
+            Boolean ok = inst.Handle(SystemStorage);
 
             //Update timers (sound and video)
 
             // Increment the program counter (2 bytes per instruction)
-            mProgramCounter += 2; 
+            SystemStorage.ProgramCounter += 2; 
 
             return ok;
         }

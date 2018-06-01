@@ -10,15 +10,13 @@ namespace chip8_emu.CPU.Instruction
         #endregion
 
         #region Constructor
-        public InstMem_ANNN(Memory memory, Stack stack)
+        public InstMem_ANNN()
         {
-            this.mMemory = memory;
-            this.mStack = stack;
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(Memory memory)
+        public Boolean Handle(CPUData systemData)
         {
             return true;
         }

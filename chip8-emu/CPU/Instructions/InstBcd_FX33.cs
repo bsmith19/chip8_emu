@@ -11,7 +11,7 @@ namespace chip8_emu.CPU.Instruction
         #endregion
 
         #region Overrides
-        public Boolean Handle(Memory memory, Stack stack)
+        public Boolean Handle(CPUData systemData)
         {
             return true;
         }

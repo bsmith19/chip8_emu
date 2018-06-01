@@ -4,21 +4,14 @@ namespace chip8_emu.CPU.Instruction
 {
     public class InstCond_9XY0 : IInstruction
     {
-        #region Private Vars
-        private Memory mMemory;
-        private Stack mStack;
-        #endregion
-
         #region Constructor
-        public InstCond_9XY0(Memory memory, Stack stack)
+        public InstCond_9XY0()
         {
-            this.mMemory = memory;
-            this.mStack = stack;
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(Memory memory)
+        public Boolean Handle(CPUData systemData)
         {
             return true;
         }
