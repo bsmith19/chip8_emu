@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstDisplay_00E0 : IInstruction
+    public class InstDisplay_00E0 : Instruction
     {
 
         #region Constructor
-        public InstDisplay_00E0()
+        public InstDisplay_00E0(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

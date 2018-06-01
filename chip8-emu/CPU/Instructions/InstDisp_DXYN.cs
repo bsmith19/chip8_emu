@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstDisp_DXYN : IInstruction
+    public class InstDisp_DXYN : Instruction
     {
 
         #region Constructor
-        public InstDisp_DXYN()
+        public InstDisp_DXYN(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

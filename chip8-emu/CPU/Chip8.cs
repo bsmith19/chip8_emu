@@ -38,13 +38,10 @@ namespace chip8_emu.CPU
             ushort opCode = SystemStorage.SystemMemory.getOpcode(SystemStorage.ProgramCounter);
 
             //Pick Correct action for opcode
-            Instruction.IInstruction inst = Instruction.InstructionFactory.buildInstruction(opCode);
+            Instructions.Instruction inst = Instructions.InstructionFactory.buildInstruction(opCode);
             Boolean ok = inst.Handle(SystemStorage);
 
             //Update timers (sound and video)
-
-            // Increment the program counter (2 bytes per instruction)
-            SystemStorage.ProgramCounter += 2; 
 
             return ok;
         }

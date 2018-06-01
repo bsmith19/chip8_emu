@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstBitOp_8XYE : IInstruction
+    public class InstBitOp_8XYE : Instruction
     {
 
         #region Constructor
-        public InstBitOp_8XYE()
+        public InstBitOp_8XYE(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

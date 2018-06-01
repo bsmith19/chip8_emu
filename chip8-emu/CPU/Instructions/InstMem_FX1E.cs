@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstMem_FX1E : IInstruction
+    public class InstMem_FX1E : Instruction
     {
 
         #region Constructor
-        public InstMem_FX1E()
+        public InstMem_FX1E(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

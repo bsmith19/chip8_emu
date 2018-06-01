@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstKeyOp_EXA1 : IInstruction
+    public class InstKeyOp_EXA1 : Instruction
     {
 
         #region Constructor
-        public InstKeyOp_EXA1()
+        public InstKeyOp_EXA1(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

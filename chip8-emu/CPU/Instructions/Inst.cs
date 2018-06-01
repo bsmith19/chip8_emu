@@ -1,10 +1,23 @@
 using System;
 using chip8_emu.CPU;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public interface IInstruction
+    abstract public class Instruction
     {
-        Boolean Handle(CPUData systemData);
+        #region ProtectedVar
+        protected ushort mOpCode;
+        #endregion
+
+        #region Constructors
+        protected Instruction(ushort opcode)
+        {
+            mOpCode = opcode;
+        }
+        #endregion
+
+        #region Abstract Methods
+        abstract public Boolean Handle(CPUData systemData);
+        #endregion
     }
 }

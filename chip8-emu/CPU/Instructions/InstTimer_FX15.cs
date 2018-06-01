@@ -1,18 +1,18 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstTimer_FX15 : IInstruction
+    public class InstTimer_FX15 : Instruction
     {
 
         #region Constructor
-        public InstTimer_FX15()
+        public InstTimer_FX15(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }

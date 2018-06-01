@@ -1,17 +1,17 @@
 using System;
 
-namespace chip8_emu.CPU.Instruction
+namespace chip8_emu.CPU.Instructions
 {
-    public class InstConst_7XNN : IInstruction
+    public class InstConst_7XNN : Instruction
     {
         #region Constructor
-        public InstConst_7XNN()
+        public InstConst_7XNN(ushort opcode) : base(opcode)
         {
         }
         #endregion
 
         #region Overrides
-        public Boolean Handle(CPUData systemData)
+        override public Boolean Handle(CPUData systemData)
         {
             return true;
         }
