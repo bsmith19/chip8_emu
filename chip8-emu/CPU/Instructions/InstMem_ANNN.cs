@@ -14,6 +14,9 @@ namespace chip8_emu.CPU.Instructions
         #region Overrides
         override public Boolean Handle(CPUData systemData)
         {
+            // Sets I to the address NNN.
+            systemData.IndexRegister = (ushort)(mOpCode & 0x0FFF);
+            systemData.ProgramCounter += 2;
             return true;
         }
         #endregion

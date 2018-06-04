@@ -14,6 +14,8 @@ namespace chip8_emu.CPU.Instructions
         #region Overrides
         override public Boolean Handle(CPUData systemData)
         {
+            //  the next instruction if the key stored in VX isn't pressed. (Usually the next instruction is a jump to skip a code block)
+            // TODO: comeback to this once input is figured out
             return true;
         }
         #endregion

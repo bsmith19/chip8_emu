@@ -13,6 +13,12 @@ namespace chip8_emu.CPU.Instructions
         #region Overrides
         override public Boolean Handle(CPUData systemData)
         {
+            //Sets VX to VX XOR VY. (Bitwise OR operation)
+            systemData.CpuRegisters[(mOpCode & 0x0F00) >> 8] = (Byte)(systemData.CpuRegisters[(mOpCode & 0x00F0) >> 4] ^ systemData.CpuRegisters[(mOpCode & 0x0F00) >> 8]);
+
+            //Jump to next Instr
+            systemData.ProgramCounter += 2;
+
             return true;
         }
         #endregion

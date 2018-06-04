@@ -49,7 +49,7 @@ namespace chip8_emu.CPU
             Int32 fontAvailSize = mMemorySize - mMemoryMap[EMemoryPartitions.Font];
             if(font.Length <= fontAvailSize)
             {
-                for(Int32 i = 0; i < font.Length; i++)
+                for(Int32 i = 0; i <= font.Length; i++)
                 {
                     mMemory[mMemoryMap[EMemoryPartitions.Font] + i] = font[i];
                 }
@@ -68,6 +68,21 @@ namespace chip8_emu.CPU
             //Merge two parts to one opcode
             ushort opCode = (ushort)(opP1 << 8 | opP2);
             return opCode;
+        }
+        #endregion
+
+        #region Overloaded Operators
+        //Overload this class to have an [] index operator
+        public Byte this[int key]
+        {
+            get
+            {
+                return this.mMemory[key];
+            }
+            set
+            {
+                this.mMemory[key] = value;
+            }
         }
         #endregion
     }

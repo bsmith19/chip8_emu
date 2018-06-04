@@ -9,11 +9,6 @@ namespace chip8_emu.CPU
         private CPUData SystemStorage { get; set;}
         #endregion
 
-        #region Timers
-        private Byte soundTimer;
-        private Byte delayTimer;
-        #endregion
-
         #region Constructors
         public Chip8(short stackSize, short memorySize, int programSpace)
         {
@@ -55,5 +50,10 @@ namespace chip8_emu.CPU
         public Byte[] CpuRegisters { get; set; }
         public ushort ProgramCounter { get; set; }
         public ushort IndexRegister { get; set; }
+        
+        #region Timers
+        public Byte SoundTimer { get; set; }
+        public Byte DelayTimer { get; set; }
+        #endregion
     }
 }

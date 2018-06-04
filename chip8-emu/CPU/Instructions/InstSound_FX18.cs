@@ -14,6 +14,10 @@ namespace chip8_emu.CPU.Instructions
         #region Overrides
         override public Boolean Handle(CPUData systemData)
         {
+            // Sets the sound timer to VX.
+            systemData.SoundTimer = systemData.CpuRegisters[(mOpCode & 0x0F00) >> 8];
+            systemData.ProgramCounter += 2;
+            
             return true;
         }
         #endregion

@@ -14,6 +14,7 @@ namespace chip8_emu.CPU.Instructions
         #region Overrides
         override public Boolean Handle(CPUData systemData)
         {
+            // A key press is awaited, and then stored in VX. (Blocking Operation. All instruction halted until next key event).
             return true;
         }
         #endregion
