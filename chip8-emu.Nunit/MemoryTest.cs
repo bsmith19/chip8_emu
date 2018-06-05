@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using Xunit;
 
 using chip8_emu.CPU;
@@ -9,6 +10,20 @@ namespace chip8_emu.Xunit.CPU
 {
     public class MemoryTest
     {
+        private Dictionary<string, Stream> mRoms;
+
+        public MemoryTest()
+        {
+            // Load the shared resource
+            Assembly assembly = typeof(chip8_emu.Xunit.CPU.MemoryTest).Assembly;
+            mRoms = new Dictionary<string, Stream>()
+            {
+                {"pong", assembly.GetManifestResourceStream("chip8_emu.Xunit.Resources.pong2.c8")},
+                {"tetris", assembly.GetManifestResourceStream("chip8_emu.Xunit.Resources.tetris.c8")},
+                {"invaders", assembly.GetManifestResourceStream("chip8_emu.Xunit.Resources.invaders.c8")}
+            };
+        }
+
         [Fact]
         public void LoadFontTest()
         {
@@ -49,7 +64,7 @@ namespace chip8_emu.Xunit.CPU
                 {EMemoryPartitions.Rom, 511}
             };
 
-            using(BinaryReader br = new BinaryReader(File.Open("..\\..\\..\\Resources\\pong2.c8", FileMode.Open)))
+            using(BinaryReader br = new BinaryReader(mRoms["pong"]))
             {
                 Memory mem = new Memory(4096, memMap);
                 Assert.True(mem.loadRom(br.ReadBytes((int)br.BaseStream.Length)));
@@ -66,7 +81,7 @@ namespace chip8_emu.Xunit.CPU
                 {EMemoryPartitions.Rom, 512}
             };
 
-            using(BinaryReader br = new BinaryReader(File.Open("..\\..\\..\\Resources\\pong2.c8", FileMode.Open)))
+            using(BinaryReader br = new BinaryReader(mRoms["pong"]))
             {
                 Memory mem = new Memory(4096, memMap);
                 Assert.True(mem.loadRom(br.ReadBytes((int)br.BaseStream.Length)));

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/chip8-emu.csproj"
+                "${workspaceFolder}/chip8-emu/chip8-emu.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
